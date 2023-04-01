@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A'
   },
   list: {
+    position: 'relative',
     flex: 1,
     padding: 32
   }

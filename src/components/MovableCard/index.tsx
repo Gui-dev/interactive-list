@@ -38,6 +38,16 @@ export const MovableCard = ({ data, cardsPosition, scrollY, cardsCount }: Movabl
     return newPosition
   }
 
+  useAnimatedReaction(() => cardsPosition.value[data.id],
+    (currentPosition, previousPosition) => {
+      if (currentPosition !== previousPosition) {
+        if (!moving) {
+          top.value = withSpring(currentPosition * CARD_HEIGHT)
+        }
+      }
+    },
+    [moving])
+
   const longPressGesture = Gesture
     .LongPress()
     .onStart(() => {

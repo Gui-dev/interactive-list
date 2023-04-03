@@ -1,7 +1,7 @@
 <h1 align="center">Interactive list</h1>
 
 <p align="center">
-  <img alt="Interactive list" src="./.screens/home.gif" >
+  <img alt="Interactive list" src="./.screens/home.gif" height="400">
 </p>
 
 # About the Project

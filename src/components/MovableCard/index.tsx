@@ -58,7 +58,7 @@ export const MovableCard = ({ data, cardsPosition, scrollY, cardsCount }: Movabl
   const panGesture = Gesture
     .Pan()
     .manualActivation(true)
-    .onTouchesDown((_, state) => {
+    .onTouchesMove((_, state) => {
       moving ? state.activate() : state.fail()
     })
     .onUpdate((event) => {
@@ -75,8 +75,11 @@ export const MovableCard = ({ data, cardsPosition, scrollY, cardsCount }: Movabl
       }
     })
     .onFinalize(() => {
+      const newPosition = cardsPosition.value[data.id] * CARD_HEIGHT
+      top.value = withSpring(newPosition)
       runOnJS(setMoving)(false)
     })
+    .simultaneousWithExternalGesture(longPressGesture)
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -88,7 +91,7 @@ export const MovableCard = ({ data, cardsPosition, scrollY, cardsCount }: Movabl
 
   return (
     <Animated.View style={[styles.container, animatedStyle]}>
-      <GestureDetector gesture={Gesture.Race(longPressGesture, panGesture)}>
+      <GestureDetector gesture={Gesture.Race(panGesture, longPressGesture)}>
         <Card
           data={data}
         />

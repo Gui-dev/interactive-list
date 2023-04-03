@@ -3,7 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles, HEIGHT, MARGIN_BOTTOM } from './style'
 
-// export const CARD_HEIGHT = HEIGHT + MARGIN_BOTTOM
+export const CARD_HEIGHT = HEIGHT + MARGIN_BOTTOM
 
 export interface CardProps {
   id: number
